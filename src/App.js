@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { useSelector } from "react-redux";
+import "./App.css";
+import BgColor from "./components/BgColor/BgColor";
+import BgImg from "./components/BgImg/BgImg";
+import Counter from "./components/Counter/Counter";
 
 function App() {
+  const { bgColor, setBgImg } = useSelector((state) => state);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      style={{
+        backgroundImage: `URL(${setBgImg})`,
+        backgroundColor: bgColor,
+        backgroundRepeat: "no-repeat",
+        height: "100vh",
+        overflow: "hidden",
+      }}
+    >
+      <Counter />
+      <BgColor />
+      <BgImg />
     </div>
   );
 }
